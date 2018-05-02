@@ -1,5 +1,6 @@
 import requests
 import re
+import html
 
 
 class PunOfTheDay:
@@ -11,4 +12,4 @@ class PunOfTheDay:
 
         pun_raw = res.text.split("\n")[0]
         pun_match = self.__pun_regex.match(pun_raw)
-        return pun_match.group(1)
+        return html.unescape(pun_match.group(1))
