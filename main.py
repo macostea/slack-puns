@@ -11,7 +11,12 @@ pun_of_the_day = PunOfTheDay()
 
 class Pun(Resource):
     def post(self):
-        return pun_of_the_day.get_random_pun()
+        pun = pun_of_the_day.get_random_pun()
+
+        return {
+            "response_type": "in_channel",
+            "text": "{}".format(pun),
+        }
 
 
 api.add_resource(Pun, "/randompun")
