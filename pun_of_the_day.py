@@ -1,15 +1,17 @@
 import requests
-import re
-import html
+from bs4 import BeautifulSoup
 
 
 class PunOfTheDay:
     def __init__(self):
-        self.__pun_regex = re.compile(r"document\.write\(\'&quot;(.*)&quot;<br />\'\)")
+        pass
 
     def get_random_pun(self):
-        res = requests.get("https://www.punoftheday.com/cgi-bin/arandompun.pl")
+        res = requests.get("https://pun.me/random/")
+        soup = BeautifulSoup(res.text, 'html.parser')
 
-        pun_raw = res.text.split("\n")[0]
-        pun_match = self.__pun_regex.match(pun_raw)
-        return html.unescape(pun_match.group(1))
+        all_puns = soup.find_all("ul", {"class": "puns single"})
+        all_puns[0].li.span.decompose()
+        pun = all_puns[0].li.get_text()
+
+        return pun
