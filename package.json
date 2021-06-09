@@ -1,0 +1,21 @@
+{
+    "private": true,
+    "name": "slack-puns",
+    "version": "1.0.0",
+    "description": "Slack puns on Cloudflare workers",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha",
+        "format": "prettier --write '**/*.{js,css,json,md}'"
+    },
+    "author": "Mihai Costea",
+    "license": "MIT",
+    "devDependencies": {
+        "mocha": "^9.0.0",
+        "prettier": "^1.18.2"
+    },
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.10",
+        "node-fetch": "^2.6.1"
+    }
+}
